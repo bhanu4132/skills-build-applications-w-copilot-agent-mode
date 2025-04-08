@@ -1,4 +1,4 @@
-from django import models
+from django import models # type: ignore
 
 class User(models.Model):
     _id = models.ObjectIdField()
