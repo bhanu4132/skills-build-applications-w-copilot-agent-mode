@@ -4,7 +4,7 @@ function Leaderboard() {
     const [leaderboard, setLeaderboard] = useState([]);
 
     useEffect(() => {
-        fetch('https://turbo-space-couscous-xjr6rgj4xgqc6gr7-8000.app.github.dev/api/leaderboard')
+        fetch('https://turbo-space-couscous-xjr6rgj4xgqc6gr7-8000.app.github.dev/api/activities')
             .then(response => response.json())
             .then(data => setLeaderboard(data));
     }, []);

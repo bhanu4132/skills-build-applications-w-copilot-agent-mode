@@ -4,7 +4,7 @@ function Teams() {
     const [teams, setTeams] = useState([]);
 
     useEffect(() => {
-        fetch('https://turbo-space-couscous-xjr6rgj4xgqc6gr7-8000.app.github.dev/api/teams')
+        fetch('https://turbo-space-couscous-xjr6rgj4xgqc6gr7-8000.app.github.dev/api/activities')
             .then(response => response.json())
             .then(data => setTeams(data));
     }, []);
