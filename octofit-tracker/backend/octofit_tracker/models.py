@@ -1,33 +1,43 @@
-from djongo import models
+from django import models
 
 class User(models.Model):
+    _id = models.ObjectIdField()
+    username = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
-    name = models.CharField(max_length=255)
-    age = models.IntegerField()
+    password = models.CharField(max_length=100)
+
     class Meta:
-        db_table = "users"
+        db_table = "octofit_user"
 
 class Team(models.Model):
-    name = models.CharField(max_length=255)
-    members = models.JSONField()
+    _id = models.ObjectIdField()
+    name = models.CharField(max_length=100)
+    members = models.ArrayReferenceField(to=User, on_delete=models.CASCADE)
+
     class Meta:
-        db_table = "teams"
+        db_table = "octofit_team"
 
 class Activity(models.Model):
+    _id = models.ObjectIdField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    type = models.CharField(max_length=50)
-    duration = models.IntegerField()
+    activity_type = models.CharField(max_length=100)
+    duration = models.DurationField()
+
     class Meta:
-        db_table = "activity"
+        db_table = "octofit_activity"
 
 class Leaderboard(models.Model):
+    _id = models.ObjectIdField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    points = models.IntegerField()
+    score = models.IntegerField()
+
     class Meta:
-        db_table = "leaderboard"
+        db_table = "octofit_leaderboard"
 
 class Workout(models.Model):
-    name = models.CharField(max_length=255)
+    _id = models.ObjectIdField()
+    name = models.CharField(max_length=100)
     description = models.TextField()
+
     class Meta:
-        db_table = "workouts"
+        db_table = "octofit_workout"

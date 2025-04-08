@@ -11,9 +11,9 @@ function Activities() {
 
     return (
         <div>
-            <h1 className="text-center">Activities</h1>
-            <table className="table table-striped">
-                <thead>
+            <h1 className="text-center display-4">Activities</h1>
+            <table className="table table-hover">
+                <thead className="table-dark">
                     <tr>
                         <th>Type</th>
                         <th>Duration (minutes)</th>
